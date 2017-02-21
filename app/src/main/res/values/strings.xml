@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">InfoLeak</string>
     <string name="action_settings">Settings</string>
+
+    <string name="email_input">Email address or username&#8230;</string>
+    <string name="empty_input_toast">Enter a valid email address or username</string>
+    <string name="data_title">Concerned Data :</string>
+    <string name="logo_description">A logo of the website concerned by the breach</string>
+
+    <string name="no_results">Good news!\nThere is no breached accounts\nassociated with this email</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
