@@ -2,7 +2,6 @@ package com.sl0b.infoleak;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 
 import com.google.gson.Gson;
 
@@ -44,8 +43,10 @@ class BreachAsyncTask extends AsyncTask<String, Void, Breach[]> {
                 return null;
             }
             reader = new BufferedReader(new InputStreamReader(inputStream));
-
-            return new Gson().fromJson(reader, Breach[].class);
+            Breach[] breaches = new Gson().fromJson(reader, Breach[].class);
+            if (breaches == null || breaches.length == 0)
+                return null;
+            else return breaches;
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error ", e);
             return null;

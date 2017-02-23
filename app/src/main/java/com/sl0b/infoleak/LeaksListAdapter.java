@@ -1,14 +1,11 @@
 package com.sl0b.infoleak;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.util.Log;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +22,10 @@ import com.caverock.androidsvg.SVG;
 import com.sl0b.infoleak.util.SvgDecoder;
 import com.sl0b.infoleak.util.SvgDrawableTranscoder;
 import com.sl0b.infoleak.util.SvgSoftwareLayerSetter;
+import com.sl0b.infoleak.util.Utilities;
 
 import java.io.InputStream;
 import java.util.List;
-
-import static com.sl0b.infoleak.util.Utilities.fromHtml;
 
 class LeaksListAdapter extends RecyclerView.Adapter<LeaksListAdapter.ViewHolder> implements View.OnClickListener {
     private Context context;
@@ -83,7 +79,8 @@ class LeaksListAdapter extends RecyclerView.Adapter<LeaksListAdapter.ViewHolder>
         holder.mTitle.setText(mDataset.get(position).getTitle());
         holder.mDomain.setText(mDataset.get(position).getDomain());
         holder.mDate.setText(mDataset.get(position).getBreachDate());
-        holder.mDescription.setText(fromHtml(mDataset.get(position).getDescription()));
+        holder.mDescription.setText(Utilities.fromHtml(mDataset.get(position).getDescription()));
+        holder.mDescription.setMovementMethod(LinkMovementMethod.getInstance());
         holder.mDataClasses.setText(mDataset.get(position).getDataClasses());
 
         if (position == expandedPosition) {

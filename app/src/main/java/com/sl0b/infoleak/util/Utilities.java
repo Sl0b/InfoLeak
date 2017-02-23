@@ -1,7 +1,9 @@
 package com.sl0b.infoleak.util;
 
+import android.graphics.Rect;
 import android.text.Html;
 import android.text.Spanned;
+import android.view.View;
 
 public class Utilities {
 
@@ -14,5 +16,19 @@ public class Utilities {
             result = Html.fromHtml(html);
         }
         return result;
+    }
+
+    public static Rect getLocationOnScreen(View view) {
+        Rect mRect = new Rect();
+        int[] location = new int[2];
+
+        view.getLocationOnScreen(location);
+
+        mRect.left = location[0];
+        mRect.top = location[1];
+        mRect.right = location[0] + view.getWidth();
+        mRect.bottom = location[1] + view.getHeight();
+
+        return mRect;
     }
 }
